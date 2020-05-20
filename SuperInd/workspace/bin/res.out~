@@ -1,0 +1,4118 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 1453 was started by abdelkaderkersani on MacBook-Pro-de-Abdelkader-kersani.local,
+Sat Oct  6 19:27:48 2012
+The command was "./prover9 -f ../x14RegStabAdd1.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file ../x14RegStabAdd1.in
+
+assign(max_weight,15).
+set(prolog_style_variables).
+assign(max_given,100).
+set(raw).
+    % set(raw) -> clear(auto).
+    % clear(auto) -> clear(auto_inference).
+    % clear(auto) -> clear(auto_setup).
+    % clear(auto_setup) -> clear(predicate_elim).
+    % clear(auto_setup) -> assign(eq_defs, pass).
+    % clear(auto) -> clear(auto_limits).
+    % clear(auto_limits) -> assign(max_weight, "1000000000000.000").
+    % clear(auto_limits) -> assign(sos_limit, -1).
+    % clear(auto) -> clear(auto_denials).
+    % clear(auto) -> clear(auto_process).
+    % set(raw) -> clear(ordered_res).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> set(para_into_vars).
+    % set(raw) -> set(para_from_small).
+    % set(raw) -> clear(ordered_para).
+    % set(raw) -> clear(back_demod).
+    % set(raw) -> clear(cac_redundancy).
+    % set(raw) -> assign(backsub_check, 2147483647).
+    % set(raw) -> set(lightest_first).
+    % set(lightest_first) -> assign(weight_part, 1).
+    % set(lightest_first) -> assign(age_part, 0).
+    % set(lightest_first) -> assign(false_part, 0).
+    % set(lightest_first) -> assign(true_part, 0).
+    % set(lightest_first) -> assign(random_part, 0).
+    % set(raw) -> assign(literal_selection, none).
+set(binary_resolution).
+assign(order,kbo).
+assign(literal_selection,none).
+clear(predicate_elim).
+
+list(kbo_weights).
+s = 3.
+end_of_list.
+
+formulas(sos).
+(p(X) <-> -(-(a(X) <-> b(X)) <-> c(X))) & (c(s(X)) <-> a(X) & b(X) | c(X) & a(X) | c(X) & b(X)).
+-c(0).
+-b(X).
+q(0) <-> -(a(0) <-> p(0)).
+q(s(X)) <-> q(X) | -(a(X) <-> p(X)).
+N(X) | q(X).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (p(X) <-> -(-(a(X) <-> b(X)) <-> c(X))) & (c(s(X)) <-> a(X) & b(X) | c(X) & a(X) | c(X) & b(X)) # label(non_clause).  [assumption].
+2 q(0) <-> -(a(0) <-> p(0)) # label(non_clause).  [assumption].
+3 q(s(X)) <-> q(X) | -(a(X) <-> p(X)) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p(A) | a(A) | b(A) | c(A).  [clausify(1)].
+-p(A) | -a(A) | -b(A) | c(A).  [clausify(1)].
+-p(A) | -a(A) | b(A) | -c(A).  [clausify(1)].
+-p(A) | a(A) | -b(A) | -c(A).  [clausify(1)].
+p(A) | -a(A) | b(A) | c(A).  [clausify(1)].
+p(A) | a(A) | -b(A) | c(A).  [clausify(1)].
+p(A) | a(A) | b(A) | -c(A).  [clausify(1)].
+p(A) | -a(A) | -b(A) | -c(A).  [clausify(1)].
+-c(s(A)) | a(A) | c(A).  [clausify(1)].
+-c(s(A)) | a(A) | b(A).  [clausify(1)].
+-c(s(A)) | b(A) | c(A).  [clausify(1)].
+c(s(A)) | -a(A) | -b(A).  [clausify(1)].
+c(s(A)) | -c(A) | -a(A).  [clausify(1)].
+c(s(A)) | -c(A) | -b(A).  [clausify(1)].
+-c(0).  [assumption].
+-b(A).  [assumption].
+-q(0) | a(0) | p(0).  [clausify(2)].
+-q(0) | -a(0) | -p(0).  [clausify(2)].
+q(0) | -a(0) | p(0).  [clausify(2)].
+q(0) | a(0) | -p(0).  [clausify(2)].
+-q(s(A)) | q(A) | a(A) | p(A).  [clausify(3)].
+-q(s(A)) | q(A) | -a(A) | -p(A).  [clausify(3)].
+q(s(A)) | -q(A).  [clausify(3)].
+q(s(A)) | -a(A) | p(A).  [clausify(3)].
+q(s(A)) | a(A) | -p(A).  [clausify(3)].
+N(A) | q(A).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Term ordering decisions:
+Function symbol KB weights:  0=1. s=3.
+Predicate symbol precedence:  predicate_order([ a, c, p, b, q, N ]).
+Function symbol precedence:  function_order([ 0, s ]).
+Skipping inverse_order, because term ordering is KBO.
+
+kept:      4 -p(A) | a(A) | b(A) | c(A).  [clausify(1)].
+kept:      5 -p(A) | -a(A) | -b(A) | c(A).  [clausify(1)].
+kept:      6 -p(A) | -a(A) | b(A) | -c(A).  [clausify(1)].
+kept:      7 -p(A) | a(A) | -b(A) | -c(A).  [clausify(1)].
+kept:      8 p(A) | -a(A) | b(A) | c(A).  [clausify(1)].
+kept:      9 p(A) | a(A) | -b(A) | c(A).  [clausify(1)].
+kept:      10 p(A) | a(A) | b(A) | -c(A).  [clausify(1)].
+kept:      11 p(A) | -a(A) | -b(A) | -c(A).  [clausify(1)].
+kept:      12 -c(s(A)) | a(A) | c(A).  [clausify(1)].
+kept:      13 -c(s(A)) | a(A) | b(A).  [clausify(1)].
+kept:      14 -c(s(A)) | b(A) | c(A).  [clausify(1)].
+kept:      15 c(s(A)) | -a(A) | -b(A).  [clausify(1)].
+kept:      16 c(s(A)) | -c(A) | -a(A).  [clausify(1)].
+kept:      17 c(s(A)) | -c(A) | -b(A).  [clausify(1)].
+kept:      18 -c(0).  [assumption].
+kept:      19 -b(A).  [assumption].
+kept:      20 -q(0) | a(0) | p(0).  [clausify(2)].
+kept:      21 -q(0) | -a(0) | -p(0).  [clausify(2)].
+kept:      22 q(0) | -a(0) | p(0).  [clausify(2)].
+kept:      23 q(0) | a(0) | -p(0).  [clausify(2)].
+kept:      24 -q(s(A)) | q(A) | a(A) | p(A).  [clausify(3)].
+kept:      25 -q(s(A)) | q(A) | -a(A) | -p(A).  [clausify(3)].
+kept:      26 q(s(A)) | -q(A).  [clausify(3)].
+kept:      27 q(s(A)) | -a(A) | p(A).  [clausify(3)].
+kept:      28 q(s(A)) | a(A) | -p(A).  [clausify(3)].
+kept:      29 N(A) | q(A).  [assumption].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 -p(A) | a(A) | b(A) | c(A).  [clausify(1)].
+6 -p(A) | -a(A) | b(A) | -c(A).  [clausify(1)].
+8 p(A) | -a(A) | b(A) | c(A).  [clausify(1)].
+10 p(A) | a(A) | b(A) | -c(A).  [clausify(1)].
+12 -c(s(A)) | a(A) | c(A).  [clausify(1)].
+13 -c(s(A)) | a(A) | b(A).  [clausify(1)].
+14 -c(s(A)) | b(A) | c(A).  [clausify(1)].
+16 c(s(A)) | -c(A) | -a(A).  [clausify(1)].
+18 -c(0).  [assumption].
+19 -b(A).  [assumption].
+20 -q(0) | a(0) | p(0).  [clausify(2)].
+21 -q(0) | -a(0) | -p(0).  [clausify(2)].
+22 q(0) | -a(0) | p(0).  [clausify(2)].
+23 q(0) | a(0) | -p(0).  [clausify(2)].
+24 -q(s(A)) | q(A) | a(A) | p(A).  [clausify(3)].
+25 -q(s(A)) | q(A) | -a(A) | -p(A).  [clausify(3)].
+26 q(s(A)) | -q(A).  [clausify(3)].
+27 q(s(A)) | -a(A) | p(A).  [clausify(3)].
+28 q(s(A)) | a(A) | -p(A).  [clausify(3)].
+29 N(A) | q(A).  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=8): 4 -p(A) | a(A) | b(A) | c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #2 (I,wt=8): 6 -p(A) | -a(A) | b(A) | -c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #3 (I,wt=8): 8 p(A) | -a(A) | b(A) | c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #4 (I,wt=8): 10 p(A) | a(A) | b(A) | -c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #5 (I,wt=7): 12 -c(s(A)) | a(A) | c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #6 (I,wt=7): 13 -c(s(A)) | a(A) | b(A).  [clausify(1)].
+ max_rank =  1  
+
+given #7 (I,wt=7): 14 -c(s(A)) | b(A) | c(A).  [clausify(1)].
+ max_rank =  1  
+
+given #8 (I,wt=7): 16 c(s(A)) | -c(A) | -a(A).  [clausify(1)].
+ max_rank =  1  
+
+given #9 (I,wt=2): 18 -c(0).  [assumption].
+ max_rank =  1  
+
+given #10 (I,wt=2): 19 -b(A).  [assumption].
+ max_rank =  1  
+
+given #11 (I,wt=6): 20 -q(0) | a(0) | p(0).  [clausify(2)].
+ max_rank =  1  
+
+given #12 (I,wt=6): 21 -q(0) | -a(0) | -p(0).  [clausify(2)].
+ max_rank =  1  
+
+given #13 (I,wt=6): 22 q(0) | -a(0) | p(0).  [clausify(2)].
+ max_rank =  1  
+
+given #14 (I,wt=6): 23 q(0) | a(0) | -p(0).  [clausify(2)].
+ max_rank =  1  
+
+given #15 (I,wt=9): 24 -q(s(A)) | q(A) | a(A) | p(A).  [clausify(3)].
+ max_rank =  1  
+
+given #16 (I,wt=9): 25 -q(s(A)) | q(A) | -a(A) | -p(A).  [clausify(3)].
+ max_rank =  1  
+
+given #17 (I,wt=5): 26 q(s(A)) | -q(A).  [clausify(3)].
+ max_rank =  1  
+
+given #18 (I,wt=7): 27 q(s(A)) | -a(A) | p(A).  [clausify(3)].
+ max_rank =  1  
+
+given #19 (I,wt=7): 28 q(s(A)) | a(A) | -p(A).  [clausify(3)].
+ max_rank =  1  
+
+given #20 (I,wt=4): 29 N(A) | q(A).  [assumption].
+ max_rank =  1  
+
+given #21 (W,wt=5): 42 -c(s(0)) | b(0).  [resolve(18,a,14,c)].
+ max_rank =  1  
+
+given #22 (W,wt=3): 65 -c(s(0)).  [resolve(42,b,19,a)].
+ max_rank =  1  
+
+given #23 (W,wt=5): 46 -c(s(A)) | c(A).  [resolve(19,a,14,b)].
+ max_rank =  1  
+
+given #24 (W,wt=5): 47 -c(s(A)) | a(A).  [resolve(19,a,13,c)].
+ max_rank =  1  
+
+given #25 (W,wt=5): 60 N(A) | q(s(A)).  [resolve(29,b,26,b)].
+ max_rank =  1  
+
+given #26 (W,wt=6): 44 p(0) | -a(0) | b(0).  [resolve(18,a,8,d)].
+ max_rank =  1  
+
+given #27 (W,wt=4): 70 p(0) | -a(0).  [resolve(44,c,19,a)].
+ max_rank =  1  
+
+given #28 (W,wt=4): 71 -a(0) | -q(0).  [resolve(70,a,21,c),merge(c)].
+ max_rank =  1  
+
+given #29 (W,wt=4): 72 p(0) | -q(0).  [resolve(70,b,20,b),merge(c)].
+ max_rank =  1  
+
+given #30 (W,wt=4): 73 -a(0) | N(0).  [resolve(71,b,29,b)].
+ max_rank =  1  
+
+given #31 (W,wt=4): 74 p(0) | N(0).  [resolve(72,b,29,b)].
+ max_rank =  1  
+
+given #32 (W,wt=6): 45 -p(0) | a(0) | b(0).  [resolve(18,a,4,d)].
+ max_rank =  1  
+
+given #33 (W,wt=4): 79 -p(0) | a(0).  [resolve(45,c,19,a)].
+ max_rank =  1  
+
+given #34 (W,wt=4): 80 a(0) | N(0).  [resolve(79,a,74,a)].
+ max_rank =  1  
+
+given #35 (W,wt=2): 84 N(0).  [resolve(80,a,73,a),merge(b)].
+ max_rank =  1  
+
+given #36 (W,wt=4): 81 a(0) | -q(0).  [resolve(79,a,72,a)].
+ max_rank =  1  
+
+given #37 (W,wt=2): 85 -q(0).  [resolve(81,a,71,a),merge(b)].
+ max_rank =  1  
+
+given #38 (W,wt=6): 48 p(A) | a(A) | -c(A).  [resolve(19,a,10,c)].
+ max_rank =  1  
+
+given #39 (W,wt=6): 49 p(A) | -a(A) | c(A).  [resolve(19,a,8,c)].
+ max_rank =  1  
+
+given #40 (W,wt=6): 50 -p(A) | -a(A) | -c(A).  [resolve(19,a,6,c)].
+ max_rank =  1  
+
+given #41 (W,wt=6): 51 -p(A) | a(A) | c(A).  [resolve(19,a,4,c)].
+ max_rank =  1  
+
+given #42 (W,wt=6): 92 p(s(0)) | -a(s(0)).  [resolve(49,c,65,a)].
+ max_rank =  1  
+
+given #43 (W,wt=6): 103 -p(s(0)) | a(s(0)).  [resolve(51,c,65,a)].
+ max_rank =  1  
+
+given #44 (W,wt=7): 52 -q(s(0)) | a(0) | p(0).  [resolve(24,b,20,a),merge(d),merge(e)].
+ max_rank =  1  
+
+given #45 (W,wt=5): 107 -q(s(0)) | p(0).  [resolve(52,b,70,b),merge(c)].
+ max_rank =  1  
+
+given #46 (W,wt=5): 108 -q(s(0)) | a(0).  [resolve(52,c,79,a),merge(c)].
+ max_rank =  1  
+
+given #47 (W,wt=5): 109 p(0) | N(s(0)).  [resolve(107,a,29,b)].
+ max_rank =  1  
+
+given #48 (W,wt=5): 110 a(0) | N(s(0)).  [resolve(108,a,29,b)].
+ max_rank =  1  
+
+given #49 (W,wt=7): 56 -q(s(0)) | -a(0) | -p(0).  [resolve(25,b,21,a),merge(d),merge(e)].
+ max_rank =  1  
+
+given #50 (W,wt=5): 113 -q(s(0)) | -p(0).  [resolve(56,b,108,b),merge(c)].
+ max_rank =  1  
+
+given #51 (W,wt=3): 118 -q(s(0)).  [resolve(113,b,107,b),merge(b)].
+ max_rank =  1  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #52 (W,wt=3): 119 N(s(0)).  [resolve(118,a,29,b)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #53 (W,wt=7): 86 a(A) | -c(A) | q(s(A)).  [resolve(48,a,28,c),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #54 (W,wt=7): 87 p(A) | -c(A) | q(s(A)).  [resolve(48,b,27,b),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #55 (W,wt=7): 88 p(A) | -c(A) | c(s(A)).  [resolve(48,b,16,c),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #56 (W,wt=7): 95 p(A) | -a(A) | c(s(A)).  [resolve(49,c,16,b),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #57 (W,wt=7): 96 -a(A) | -c(A) | q(s(A)).  [resolve(50,a,27,c),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #58 (W,wt=5): 127 -c(A) | q(s(A)).  [resolve(96,a,86,a),merge(c),merge(d)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #59 (W,wt=6): 129 q(s(A)) | -c(s(A)).  [resolve(127,a,46,b)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #60 (W,wt=7): 97 -p(A) | -c(A) | -c(s(A)).  [resolve(50,b,47,b)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #61 (W,wt=5): 132 -p(A) | -c(s(A)).  [resolve(97,b,46,b),merge(c)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #62 (W,wt=8): 93 p(s(A)) | -a(s(A)) | a(A).  [resolve(49,c,47,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #63 (W,wt=8): 94 p(s(A)) | -a(s(A)) | c(A).  [resolve(49,c,46,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #64 (W,wt=8): 104 -p(s(A)) | a(s(A)) | a(A).  [resolve(51,c,47,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #65 (W,wt=8): 105 -p(s(A)) | a(s(A)) | c(A).  [resolve(51,c,46,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #66 (W,wt=8): 135 -p(A) | -p(s(A)) | a(s(A)).  [resolve(132,b,51,c)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #67 (W,wt=8): 136 -p(A) | p(s(A)) | -a(s(A)).  [resolve(132,b,49,c)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #68 (W,wt=9): 61 N(s(A)) | q(A) | -a(A) | -p(A).  [resolve(29,b,25,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #69 (W,wt=9): 62 N(s(A)) | q(A) | a(A) | p(A).  [resolve(29,b,24,a)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #70 (W,wt=9): 90 -a(A) | c(A) | -q(s(A)) | q(A).  [resolve(49,a,25,d),merge(e)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #71 (W,wt=9): 91 p(A) | c(A) | -q(s(A)) | q(A).  [resolve(49,b,24,c),merge(e)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #72 (W,wt=9): 101 a(A) | c(A) | -q(s(A)) | q(A).  [resolve(51,a,24,d),merge(e)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #73 (W,wt=7): 169 c(A) | -q(s(A)) | q(A).  [resolve(101,a,90,a),merge(d),merge(e),merge(f)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+174: c(v0) | q(v0) | N(s(v0)).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #74 (W,wt=7): 174 c(A) | q(A) | N(s(A)).  [resolve(169,b,29,b)].
+ max_rank =  2  
+ max_rank =  2 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+158: N(s(s(0))) | q(s(0)) | p(s(0)).
+163: N(s(s(0))) | q(s(0)) | a(s(0)).
+143: N(s(s(0))) | q(s(0)) | -p(s(0)).
+175: q(s(v0)) | N(s(s(v0))) | -p(v0).
+149: N(s(s(0))) | q(s(0)) | -a(s(0)).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+180: c(s(v0)) | N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+179: c(s(v0)) | N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+177: c(s(v0)) | N(s(s(v0))) | c(v0) | q(v0).
+176: q(s(v0)) | N(s(s(v0))).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #75 (W,wt=7): 176 q(s(A)) | N(s(s(A))).  [resolve(174,a,129,b),merge(c)].
+ max_rank =  2  
+ max_rank =  3 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+158: N(s(s(0))) | q(s(0)) | p(s(0)).
+163: N(s(s(0))) | q(s(0)) | a(s(0)).
+143: N(s(s(0))) | q(s(0)) | -p(s(0)).
+175: q(s(v0)) | N(s(s(v0))) | -p(v0).
+149: N(s(s(0))) | q(s(0)) | -a(s(0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+177: c(s(v0)) | N(s(s(v0))) | c(v0) | q(v0).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+151: N(s(s(0))) | a(s(0)) | p(s(0)).
+178: c(s(0)) | N(s(s(0))).
+137: N(s(s(0))) | -a(s(0)) | -p(s(0)).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+179: c(s(v0)) | N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+180: c(s(v0)) | N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (176: q(s(v0)) | N(s(s(v0))).
+174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #76 (W,wt=4): 182 N(s(s(0))).  [resolve(176,a,118,a)].
+ max_rank =  3  
+ max_rank =  3 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+158: N(s(s(0))) | q(s(0)) | p(s(0)).
+163: N(s(s(0))) | q(s(0)) | a(s(0)).
+143: N(s(s(0))) | q(s(0)) | -p(s(0)).
+175: q(s(v0)) | N(s(s(v0))) | -p(v0).
+149: N(s(s(0))) | q(s(0)) | -a(s(0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+177: c(s(v0)) | N(s(s(v0))) | c(v0) | q(v0).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+151: N(s(s(0))) | a(s(0)) | p(s(0)).
+178: c(s(0)) | N(s(s(0))).
+137: N(s(s(0))) | -a(s(0)) | -p(s(0)).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+179: c(s(v0)) | N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+180: c(s(v0)) | N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+)  i == 2  j== 3  
+Si = (176: q(s(v0)) | N(s(s(v0))).
+174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+)  
+Sij = (184: N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+183: N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+181: N(s(s(v0))) | c(v0) | q(v0).
+)  Fin
+OOO ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ Sij is not generated by Si 
+
+given #77 (W,wt=8): 181 N(s(s(A))) | c(A) | q(A).  [resolve(176,a,169,b)].
+ max_rank =  3  
+ max_rank =  3 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+158: N(s(s(0))) | q(s(0)) | p(s(0)).
+163: N(s(s(0))) | q(s(0)) | a(s(0)).
+143: N(s(s(0))) | q(s(0)) | -p(s(0)).
+175: q(s(v0)) | N(s(s(v0))) | -p(v0).
+149: N(s(s(0))) | q(s(0)) | -a(s(0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+177: c(s(v0)) | N(s(s(v0))) | c(v0) | q(v0).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+151: N(s(s(0))) | a(s(0)) | p(s(0)).
+178: c(s(0)) | N(s(s(0))).
+137: N(s(s(0))) | -a(s(0)) | -p(s(0)).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+179: c(s(v0)) | N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+180: c(s(v0)) | N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+185: N(s(s(s(v0)))) | q(s(v0)) | -p(v0).
+)  i == 1  j== 2  
+Si = (29: N(v0) | q(v0).
+155: N(s(v0)) | q(v0) | p(v0) | c(s(v0)).
+146: N(s(v0)) | q(v0) | -a(v0) | c(s(v0)).
+)  
+Sij = (176: q(s(v0)) | N(s(s(v0))).
+174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+188: N(s(s(v0))) | q(v0) | c(s(v0)) | -a(v0).
+187: N(s(s(v0))) | q(v0) | p(v0) | c(s(v0)).
+)  Fin
+(29: N(v0) | q(v0).
+73: -a(0) | N(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+84: N(0).
+) 29: N(v0) | q(v0).
+
+given #78 (W,wt=8): 186 N(s(s(s(A)))) | q(s(A)).  [resolve(181,b,129,b),merge(c)].
+ max_rank =  3  
+ max_rank =  4 () (-p(v0) | a(v0) | b(v0) | c(v0).
+-p(v0) | -a(v0) | -b(v0) | c(v0).
+-p(v0) | -a(v0) | b(v0) | -c(v0).
+-p(v0) | a(v0) | -b(v0) | -c(v0).
+p(v0) | -a(v0) | b(v0) | c(v0).
+p(v0) | a(v0) | -b(v0) | c(v0).
+p(v0) | a(v0) | b(v0) | -c(v0).
+p(v0) | -a(v0) | -b(v0) | -c(v0).
+-c(s(v0)) | a(v0) | c(v0).
+-c(s(v0)) | a(v0) | b(v0).
+-c(s(v0)) | b(v0) | c(v0).
+c(s(v0)) | -a(v0) | -b(v0).
+c(s(v0)) | -c(v0) | -a(v0).
+c(s(v0)) | -c(v0) | -b(v0).
+-c(0).
+-b(v0).
+-q(0) | a(0) | p(0).
+-q(0) | -a(0) | -p(0).
+q(0) | -a(0) | p(0).
+q(0) | a(0) | -p(0).
+-q(s(v0)) | q(v0) | a(v0) | p(v0).
+-q(s(v0)) | q(v0) | -a(v0) | -p(v0).
+q(s(v0)) | -q(v0).
+q(s(v0)) | -a(v0) | p(v0).
+q(s(v0)) | a(v0) | -p(v0).
+N(v0) | q(v0).
+9: p(v0) | a(v0) | -b(v0) | c(v0).
+11: p(v0) | -a(v0) | -b(v0) | -c(v0).
+7: -p(v0) | a(v0) | -b(v0) | -c(v0).
+5: -p(v0) | -a(v0) | -b(v0) | c(v0).
+15: c(s(v0)) | -a(v0) | -b(v0).
+17: c(s(v0)) | -c(v0) | -b(v0).
+12: -c(s(v0)) | a(v0) | c(v0).
+14: -c(s(v0)) | b(v0) | c(v0).
+13: -c(s(v0)) | a(v0) | b(v0).
+43: -c(s(0)) | a(0).
+10: p(v0) | a(v0) | b(v0) | -c(v0).
+8: p(v0) | -a(v0) | b(v0) | c(v0).
+6: -p(v0) | -a(v0) | b(v0) | -c(v0).
+4: -p(v0) | a(v0) | b(v0) | c(v0).
+42: -c(s(0)) | b(0).
+44: p(0) | -a(0) | b(0).
+22: q(0) | -a(0) | p(0).
+68: -a(0) | b(0) | -q(0).
+21: -q(0) | -a(0) | -p(0).
+20: -q(0) | a(0) | p(0).
+69: p(0) | b(0) | -q(0).
+63: N(0) | -a(0) | -p(0).
+64: N(0) | a(0) | p(0).
+45: -p(0) | a(0) | b(0).
+23: q(0) | a(0) | -p(0).
+75: a(0) | b(0) | N(0).
+76: a(0) | b(0) | -q(0).
+77: -p(0) | b(0) | N(0).
+78: -p(0) | b(0) | -q(0).
+74: p(0) | N(0).
+80: a(0) | N(0).
+82: -p(0) | N(0).
+73: -a(0) | N(0).
+72: p(0) | -q(0).
+81: a(0) | -q(0).
+83: -p(0) | -q(0).
+71: -a(0) | -q(0).
+54: -q(s(v0)) | q(v0) | p(v0) | c(s(v0)) | -c(v0).
+41: c(s(v0)) | -c(v0) | p(v0) | b(v0).
+38: -c(v0) | -a(v0) | p(s(v0)) | a(s(v0)) | b(s(v0)).
+32: a(v0) | b(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+30: a(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+35: b(v0) | c(v0) | p(s(v0)) | -a(s(v0)) | b(s(v0)).
+40: c(s(v0)) | -a(v0) | p(v0) | b(v0).
+34: -c(s(v0)) | b(v0) | -p(v0) | -c(v0).
+59: q(s(v0)) | -p(v0) | c(s(v0)) | -c(v0).
+37: -c(s(v0)) | b(v0) | -p(v0) | -a(v0).
+39: -c(v0) | -a(v0) | -p(s(v0)) | -a(s(v0)) | b(s(v0)).
+33: a(v0) | b(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+31: a(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+36: b(v0) | c(v0) | -p(s(v0)) | a(s(v0)) | b(s(v0)).
+52: -q(s(0)) | a(0) | p(0).
+53: -q(s(0)) | q(0) | p(0).
+55: -q(s(0)) | q(0) | a(0).
+106: a(0) | p(0) | N(s(0)).
+57: -q(s(0)) | q(0) | -p(0).
+112: -q(s(0)) | -p(0) | N(s(0)).
+56: -q(s(0)) | -a(0) | -p(0).
+58: -q(s(0)) | q(0) | -a(0).
+114: -q(s(0)) | -a(0) | N(s(0)).
+111: -a(0) | -p(0) | N(s(0)).
+107: -q(s(0)) | p(0).
+108: -q(s(0)) | a(0).
+117: -q(s(0)) | N(s(0)).
+113: -q(s(0)) | -p(0).
+115: -q(s(0)) | -a(0).
+109: p(0) | N(s(0)).
+110: a(0) | N(s(0)).
+116: -p(0) | N(s(0)).
+87: p(v0) | -c(v0) | q(s(v0)).
+86: a(v0) | -c(v0) | q(s(v0)).
+120: -c(v0) | q(s(v0)) | c(s(v0)).
+98: -p(v0) | -c(v0) | q(s(v0)).
+96: -a(v0) | -c(v0) | q(s(v0)).
+66: -c(s(v0)) | q(s(v0)) | p(v0).
+128: -a(v0) | q(s(v0)) | -c(s(v0)).
+67: -c(s(v0)) | -q(s(v0)) | q(v0) | -p(v0).
+99: -p(v0) | -a(v0) | -c(s(v0)).
+97: -p(v0) | -c(v0) | -c(s(v0)).
+133: -p(v0) | -c(v0) | -p(s(v0)) | a(s(v0)).
+134: -p(v0) | -c(v0) | p(s(v0)) | -a(s(v0)).
+91: p(v0) | c(v0) | -q(s(v0)) | q(v0).
+101: a(v0) | c(v0) | -q(s(v0)) | q(v0).
+102: -p(v0) | c(v0) | -q(s(v0)) | q(v0).
+90: -a(v0) | c(v0) | -q(s(v0)) | q(v0).
+167: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+170: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+165: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+168: p(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+171: a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+166: -a(v0) | c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+159: N(s(v0)) | q(v0) | p(v0) | c(v0).
+164: N(s(v0)) | q(v0) | a(v0) | c(v0).
+144: N(s(v0)) | q(v0) | -p(v0) | c(v0).
+150: N(s(v0)) | q(v0) | -a(v0) | c(v0).
+154: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | -p(v0).
+160: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | -p(v0).
+140: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | -p(v0).
+145: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | -p(v0).
+157: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | a(v0).
+156: N(s(s(v0))) | q(s(v0)) | p(s(v0)) | c(v0).
+162: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | a(v0).
+161: N(s(s(v0))) | q(s(v0)) | a(s(v0)) | c(v0).
+142: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | a(v0).
+141: N(s(s(v0))) | q(s(v0)) | -p(s(v0)) | c(v0).
+148: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | a(v0).
+147: N(s(s(v0))) | q(s(v0)) | -a(s(v0)) | c(v0).
+158: N(s(s(0))) | q(s(0)) | p(s(0)).
+163: N(s(s(0))) | q(s(0)) | a(s(0)).
+143: N(s(s(0))) | q(s(0)) | -p(s(0)).
+175: q(s(v0)) | N(s(s(v0))) | -p(v0).
+149: N(s(s(0))) | q(s(0)) | -a(s(0)).
+172: c(v0) | q(v0) | N(s(s(v0))) | a(s(v0)) | p(s(v0)).
+177: c(s(v0)) | N(s(s(v0))) | c(v0) | q(v0).
+173: c(v0) | q(v0) | N(s(s(v0))) | -a(s(v0)) | -p(s(v0)).
+151: N(s(s(0))) | a(s(0)) | p(s(0)).
+178: c(s(0)) | N(s(s(0))).
+137: N(s(s(0))) | -a(s(0)) | -p(s(0)).
+152: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+179: c(s(v0)) | N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+138: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | -a(v0) | -p(v0).
+153: N(s(s(v0))) | a(s(v0)) | p(s(v0)) | q(v0) | a(v0) | p(v0).
+180: c(s(v0)) | N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+139: N(s(s(v0))) | -a(s(v0)) | -p(s(v0)) | q(v0) | a(v0) | p(v0).
+185: N(s(s(s(v0)))) | q(s(v0)) | -p(v0).
+189: N(s(s(s(v0)))) | c(s(v0)) | c(v0) | q(v0).
+190: N(s(s(s(0)))) | c(s(0)).
+191: N(s(s(s(v0)))) | c(s(v0)) | q(v0) | -a(v0) | -p(v0).
+192: N(s(s(s(v0)))) | c(s(v0)) | q(v0) | a(v0) | p(v0).
+)  i == 2  j== 3  
+Si = (176: q(s(v0)) | N(s(s(v0))).
+174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+188: N(s(s(v0))) | q(v0) | c(s(v0)) | -a(v0).
+187: N(s(s(v0))) | q(v0) | p(v0) | c(s(v0)).
+)  
+Sij = (186: N(s(s(s(v0)))) | q(s(v0)).
+181: N(s(s(v0))) | c(v0) | q(v0).
+184: N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+183: N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+)  Fin
+OOO ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+OOO ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+ ZO (174: c(v0) | q(v0) | N(s(v0)).
+176: q(s(v0)) | N(s(s(v0))).
+)  Z1 
+OOO It's a cycle 
+
+============================== PROOF =================================
+
+% Proof 1 at 0.02 (+ 0.04) seconds.
+% Given clauses 78.
+
+ Si  : 
+ (176: q(s(v0)) | N(s(s(v0))).
+174: c(v0) | q(v0) | N(s(v0)).
+62: N(s(v0)) | q(v0) | a(v0) | p(v0).
+61: N(s(v0)) | q(v0) | -a(v0) | -p(v0).
+) 
+ Sij  : 
+ (186: N(s(s(s(v0)))) | q(s(v0)).
+181: N(s(s(v0))) | c(v0) | q(v0).
+184: N(s(s(v0))) | q(v0) | a(v0) | p(v0).
+183: N(s(s(v0))) | q(v0) | -a(v0) | -p(v0).
+) 
+ The empty clauses  : 
+ (119: N(s(0)).
+) 
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=78. Generated=996. Kept=193. proofs=1.
+Usable=44. Sos=20. Demods=0. Limbo=0, Disabled=155. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=605. Back_subsumed=129.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=684. Nonunit_bsub_feature_tests=397.
+Megabytes=0.33.
+User_CPU=0.02, System_CPU=0.04, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 1453 exit (max_proofs) Sat Oct  6 19:27:48 2012

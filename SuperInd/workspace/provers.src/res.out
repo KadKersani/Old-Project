@@ -1,0 +1,17 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 3987 was started by abdelkaderkersani on pc64.home,
+Wed May 20 14:51:44 2020
+The command was "./prover9 ../x1Triv.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+%%ERROR: Unrecognized command or list:
+
+%%START ERROR%%
+man.
+%%END ERROR%%
+
+Fatal error:  Unrecognized command or list
+
