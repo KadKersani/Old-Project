@@ -1,0 +1,87 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 4031 was started by abdelkaderkersani on pc64.home,
+Wed May 20 14:59:12 2020
+The command was "./prover9 SPASS-FD/FD_even.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+Prover catching signal 2.
+
+============================== STATISTICS ============================
+
+Given=0. Generated=0. Kept=0. proofs=0.
+Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=0. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.01.
+User_CPU=0.006, System_CPU=0.00, Wall_clock=425.
+
+
+Megs malloced by palloc(): 20.
+  type (bytes each)        gets      frees     in use      bytes
+chunk ( 112)                  0          0          0      0.0 K
+string_buf (  16)             1          0          1      0.0 K
+token (  32)                  0          0          0      0.0 K
+pterm (  32)                  0          0          0      0.0 K
+hashtab (  16)                0          0          0      0.0 K
+hashnode (  16)               0          0          0      0.0 K
+term (  32)                   0          0          0      0.0 K
+      term arg arrays:                                     0.0 K
+attribute (  24)              0          0          0      0.0 K
+ilist (  16)                  0          0          0      0.0 K
+plist (  16)                 94          0         94      1.5 K
+i2list (  16)                 0          0          0      0.0 K
+just (  24)                   0          0          0      0.0 K
+parajust (  24)               0          0          0      0.0 K
+instancejust (  16)           0          0          0      0.0 K
+ivyjust (  40)                0          0          0      0.0 K
+formula (  48)                0          0          0      0.0 K
+    formula arg arrays:                                    0.0 K
+topform ( 104)                0          0          0      0.0 K
+clist_pos (  40)              0          0          0      0.0 K
+clist (  32)                  0          0          0      0.0 K
+context (1616)                0          0          0      0.0 K
+trail (  24)                  0          0          0      0.0 K
+ac_match_pos (100072)          0          0          0      0.0 K
+ac_match_free_vars_pos (20032)
+                              0          0          0      0.0 K
+btm_state ( 112)              0          0          0      0.0 K
+btu_state ( 112)              0          0          0      0.0 K
+ac_position (388448)          0          0          0      0.0 K
+fpa_trie (  40)               0          0          0      0.0 K
+fpa_state (  56)              0          0          0      0.0 K
+fpa_index (  24)              0          0          0      0.0 K
+fpa_chunk (  40)              0          0          0      0.0 K
+fpa_list (  24)               0          0          0      0.0 K
+      fpa_list chunks:                                     0.0 K
+discrim (  24)                0          0          0      0.0 K
+discrim_pos (  32)            0          0          0      0.0 K
+flat2 (  56)                  0          0          0      0.0 K
+flat (  72)                   0          0          0      0.0 K
+flatterm (  56)               0          0          0      0.0 K
+mindex (  48)                 0          0          0      0.0 K
+mindex_pos ( 112)             0          0          0      0.0 K
+lindex (  24)                 0          0          0      0.0 K
+clash (  72)                  0          0          0      0.0 K
+di_tree (  24)                0          0          0      0.0 K
+avl_node (  32)               0          0          0      0.0 K
+
+Memory report, 1 @ 20 = 20 megs (0.01 megs used).
+
+============================== SELECTOR REPORT =======================
+Sos_deleted=0, Sos_displaced=0, Sos_size=0
+  SELECTOR       PART   PRIORITY      ORDER       SIZE   SELECTED
+============================== end of selector report ================
+
+============================== end of statistics =====================
+
+Exiting.
+
+Process 4031 exit (SIGINT) Wed May 20 15:06:17 2020

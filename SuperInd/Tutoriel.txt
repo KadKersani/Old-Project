@@ -1,0 +1,8 @@
+Pour tester : il faut se mettre dans le répertoire "SuperInd" et entrer la commande suivante :
+./prover9 -f Fichier.in > res.out 
+où Fichier.in est le fichier d'entrée que vous pouvez prendre dans les répertoires :
+ FirstOrderExamples : pour les exemples du premier ordre
+Regstab : pour les exemples provenant de Regstab
+SPASS-FD : pour les exemples provenant de SPASS-FD
+
+Les résultats sont dans le fichier de sortie "res.out"
